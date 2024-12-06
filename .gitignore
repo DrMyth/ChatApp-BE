@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Build directories
+/dist/
+/build/
+
+# npm package lock files (if you want to ignore them, otherwise remove the line)
+package-lock.json
+yarn.lock
+
+# Other
+*.swp
+*.swo
