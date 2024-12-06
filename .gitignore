@@ -17,10 +17,6 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Build directories
-/dist/
-/build/
-
 # npm package lock files (if you want to ignore them, otherwise remove the line)
 package-lock.json
 yarn.lock
