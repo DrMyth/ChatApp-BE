@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tsc -b && node dist/server.js"
+    "dev": "npx tsc -b && node dist/server.js",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
