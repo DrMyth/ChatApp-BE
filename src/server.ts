@@ -1,6 +1,13 @@
-import { WebSocket, WebSocketServer } from "ws";
+import http from 'http';
+import { WebSocketServer, WebSocket } from 'ws';
 
-const wss = new WebSocketServer({ port: 8080 });
+const server = http.createServer();
+
+const wss = new WebSocketServer({ server, path: "/products" });
+
+server.listen(8080, () => {
+  console.log('Server listening on http://localhost:8080/products');
+});
 
 interface Users {
   socket: WebSocket;
