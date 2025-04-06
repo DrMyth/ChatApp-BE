@@ -1,11 +1,14 @@
 import http from 'http';
 import { WebSocketServer, WebSocket } from 'ws';
+import dotenv from 'dotenv';
+dotenv.config(); // load variables from .env
 
 const server = http.createServer();
 
 const wss = new WebSocketServer({ server, path: "/products" });
 
 server.listen(8080, () => {
+  console.log("🌍 Environment Variables:", process.env);
   console.log('Server listening on http://localhost:8080/products');
 });
 
