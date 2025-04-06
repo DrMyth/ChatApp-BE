@@ -38,7 +38,7 @@ wss.on("connection", function (socket) {
     }
 
     if (msg.type === "join") {
-      // console.log("User joined room: " + msg.payload.roomId);
+      console.log("User joined room: " + msg.payload.roomId);
       rooms.push({
         socket: socket,
         username: msg.username,
@@ -48,21 +48,21 @@ wss.on("connection", function (socket) {
       const room = userCount.find((room) => room.roomId === msg.payload.roomId);
       if (room) {
         room.userCount += 1;
-        // userCount.forEach((room) => {
-        //   console.log(
-        //     "Room: " + room.roomId + " User Count: " + room.userCount
-        //   );
-        // });
+        userCount.forEach((room) => {
+           console.log(
+             "Room: " + room.roomId + " User Count: " + room.userCount
+           );
+         });
       } else {
         userCount.push({
           userCount: 1,
           roomId: msg.payload.roomId,
         });
-        // userCount.forEach((room) => {
-        //   console.log(
-        //     "Room: " + room.roomId + " User Count: " + room.userCount
-        //   );
-        // });
+         userCount.forEach((room) => {
+           console.log(
+             "Room: " + room.roomId + " User Count: " + room.userCount
+           );
+         });
       }
 
       rooms.forEach((user) => {
@@ -89,9 +89,9 @@ wss.on("connection", function (socket) {
         return;
       }
 
-      // console.log("User sent message: " + msg.payload.message);
-      // console.log("Room: " + currentUserRoom?.roomId);
-      // console.log("Username: " + currentUserRoom?.username);
+      console.log("User sent message: " + msg.payload.message);
+      console.log("Room: " + currentUserRoom?.roomId);
+      console.log("Username: " + currentUserRoom?.username);
 
       rooms.forEach((user) => {
         if (user.roomId === currentUserRoom?.roomId) {
@@ -104,7 +104,7 @@ wss.on("connection", function (socket) {
               },
             })
           );
-          // console.log("Sent message to: " + user.username);
+          console.log("Sent message to: " + user.username);
         }
       });
     }
@@ -114,7 +114,7 @@ wss.on("connection", function (socket) {
     const user = rooms.find((user) => user.socket === socket);
     if (user) {
       rooms = rooms.filter((user) => user.socket !== socket);
-      // console.log("User left room: " + user.roomId);
+      console.log("User left room: " + user.roomId);
 
       const room = userCount.find((room) => room.roomId === user.roomId);
       if (room) {
@@ -124,11 +124,11 @@ wss.on("connection", function (socket) {
           userCount = userCount.filter((r) => r.roomId !== user.roomId);
         }
 
-        // userCount.forEach((room) => {
-        //   console.log(
-        //     "Room: " + room.roomId + " User Count: " + room.userCount
-        //   );
-        // });
+        userCount.forEach((room) => {
+          console.log(
+            "Room: " + room.roomId + " User Count: " + room.userCount
+           );
+         });
       }
 
       rooms.forEach((connectedUser) => {
